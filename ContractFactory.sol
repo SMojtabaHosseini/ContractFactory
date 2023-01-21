@@ -15,7 +15,8 @@ contract ContractFactory {
     constructor(){
         owner = msg.sender;
     }
-
+    
+    ///receive, create a new contract, update users details
     receive() external payable {
         new NewContract(msg.sender);
         contractCreated += 1;
@@ -28,7 +29,7 @@ contract ContractFactory {
         _;
     }
 
-    ///function to add users in the list and update the number of contracts they deployed
+    ///to add users in the list and update the number of contracts they deployed
     function addUser (address _address) private {
         
         if (contractsPerAddress[_address]==0){
@@ -36,9 +37,14 @@ contract ContractFactory {
         }
         contractsPerAddress[_address] += 1;
     }
+    
+    ///to get all addresses that used our contract
+    function getAllUsers() public view returns(address[] memory){
+        return allUsers;
+    }
 
-    ///function to get how many users used our contract factory
-    function getAllUsers() public view returns(uint256){
+    ///to get how many users used our contract factory
+    function totalUsers() public view returns(uint256){
         return allUsers.length;
     }
 
