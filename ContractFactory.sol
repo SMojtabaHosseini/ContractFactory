@@ -29,7 +29,7 @@ contract ContractFactory {
     }
 
     ///function to add users in the list and update the number of contracts they deployed
-    function addUser (address _address) internal {
+    function addUser (address _address) private {
         
         if (contractsPerAddress[_address]==0){
             allUsers.push(_address);
