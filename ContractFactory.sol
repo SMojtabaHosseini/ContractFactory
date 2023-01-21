@@ -7,9 +7,7 @@ import "./NewContract.sol";
 contract ContractFactory {
     address owner;
     uint256 public contractCreated;
-    ///to store how many contracts each user deployed
     mapping (address => uint256) public contractsPerAddress;
-    ///to store users and be able to retrieve how many users used our contract factory
     address[] allUsers;
 
     constructor(){
